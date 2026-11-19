@@ -5,7 +5,6 @@ const works = [
     number: '01',
     collection: 'GENERATIVE WORLD-BUILDING',
     title: 'COMPLETE KIT',
-    titleCn: '全套组合卖点片',
     note: 'A product world assembled through spatial continuity, controlled light and a sequence of machine-generated scenes.',
     duration: '00:16',
     ratio: 'landscape',
@@ -16,7 +15,6 @@ const works = [
     number: '02',
     collection: 'GENERATIVE WORLD-BUILDING',
     title: 'DEEP & LEAKPROOF',
-    titleCn: '带盖深盆防漏尿',
     note: 'A visual argument built from tension, detail and transformation, turning a functional feature into a compact image narrative.',
     duration: '00:21',
     ratio: 'landscape',
@@ -27,7 +25,6 @@ const works = [
     number: '03',
     collection: 'GENERATIVE WORLD-BUILDING',
     title: 'HIGH WALL, WARM HOME',
-    titleCn: '高边温馨家居风',
     note: 'Domestic atmosphere becomes the organising language: warm colour, scale and animal presence connect separate generated shots.',
     duration: '00:15',
     ratio: 'landscape',
@@ -38,7 +35,6 @@ const works = [
     number: '04',
     collection: 'GENERATIVE WORLD-BUILDING',
     title: 'STAINLESS BY NATURE',
-    titleCn: '不锈钢材质表达',
     note: 'Material, reflection and close observation shape a quieter study of how a manufactured object can acquire a visual character.',
     duration: '00:16',
     ratio: 'landscape',
@@ -49,7 +45,6 @@ const works = [
     number: '05',
     collection: 'SHORT-FORM NARRATIVES',
     title: 'DTC SOCIAL SHORT',
-    titleCn: '独立站原生短片',
     note: 'A rapid vertical sequence exploring how framing, rhythm and repetition can hold attention within a compressed duration.',
     duration: '00:30',
     ratio: 'portrait',
@@ -60,7 +55,6 @@ const works = [
     number: '06',
     collection: 'SHORT-FORM NARRATIVES',
     title: 'CREATOR REVIEW',
-    titleCn: '真人体验型 UGC',
     note: 'A character-led piece in which a familiar speaking format is reconstructed through generated imagery and editorial timing.',
     duration: '00:31',
     ratio: 'portrait',
@@ -71,7 +65,6 @@ const works = [
     number: '07',
     collection: 'SHORT-FORM NARRATIVES',
     title: 'BENEFIT STORY',
-    titleCn: '综合卖点竖屏片',
     note: 'Multiple ideas are translated into one visual arc through shot selection, graphic pacing and sound-conscious editing.',
     duration: '00:29',
     ratio: 'portrait',
@@ -82,7 +75,6 @@ const works = [
     number: '08',
     collection: 'SHORT-FORM NARRATIVES',
     title: 'UNBOX & USE',
-    titleCn: '开箱与使用场景',
     note: 'An everyday use sequence testing how machine-generated scenes can still feel direct, legible and grounded in lived experience.',
     duration: '00:32',
     ratio: 'portrait',
@@ -118,7 +110,7 @@ const workCard = (work) => `
         preload="metadata"
         playsinline
         poster="${urlFor(work.poster)}"
-        aria-label="${work.title}: ${work.titleCn}"
+        aria-label="${work.title}"
       >
         <source src="${urlFor(work.video)}" type="video/mp4">
         Your browser does not support video playback.
@@ -133,7 +125,7 @@ const workCard = (work) => `
       <span>${work.number}</span>
       <div>
         <p>${work.collection}</p>
-        <h3>${work.title}<small lang="zh-CN">${work.titleCn}</small></h3>
+        <h3>${work.title}</h3>
         <p class="amc-work__note">${work.note}</p>
       </div>
     </div>
@@ -243,6 +235,21 @@ const updateHeader = () => {
     <a href="#contact">Application</a>`;
 };
 
+const updateApplicationLabels = () => {
+  const labels = [
+    document.querySelector('.hero-eyebrow'),
+    document.querySelector('.footer .section-label'),
+  ];
+
+  labels.forEach((label) => {
+    if (!label) return;
+    const icon = label.querySelector('svg');
+    label.replaceChildren();
+    if (icon) label.append(icon);
+    label.append(document.createTextNode(' APPLICATION PORTFOLIO'));
+  });
+};
+
 const updateHeroLink = () => {
   const link = document.querySelector('.hero-copy .arrow-link');
   if (!link) return;
@@ -269,6 +276,7 @@ const applyRedesign = () => {
 
   updateHeader();
   updateHeroLink();
+  updateApplicationLabels();
   updateDirections();
 
   document.querySelector('.about-me')?.remove();

@@ -21,6 +21,12 @@ html { scroll-behavior: smooth; }
   padding-bottom: clamp(5rem, 9vw, 9rem);
 }
 
+.capabilities > .section-label {
+  width: fit-content;
+  margin-left: auto;
+  text-align: right;
+}
+
 .capabilities > h2 {
   max-width: none;
   margin: clamp(4rem, 7vw, 7rem) 0 0;
@@ -34,6 +40,7 @@ html { scroll-behavior: smooth; }
   display: block;
   width: fit-content;
   max-width: 100%;
+  margin-left: auto;
   white-space: nowrap;
 }
 
@@ -275,14 +282,6 @@ html { scroll-behavior: smooth; }
   font-weight: 600;
   letter-spacing: 0;
   line-height: 1;
-}
-
-.amc-work__meta h3 small {
-  display: block;
-  margin-top: .4rem;
-  color: rgba(235, 231, 221, .67);
-  font-size: .56em;
-  font-weight: 400;
 }
 
 .amc-work__meta .amc-work__note {
